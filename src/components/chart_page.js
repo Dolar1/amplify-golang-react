@@ -11,10 +11,10 @@ class MyCharts extends React.Component{
     componentDidMount(){
         try {
             setInterval(()=>{
-                axios.get('http://localhost:8000/getall').then((data)=>{
-                    console.log(data.data.Items);
+                axios.get('https://99dxjk8s1f.execute-api.ap-south-1.amazonaws.com/default/getAllData').then((data)=>{
+                    console.log(data.data.data);
                     this.setState({
-                        data : data.data.Items
+                        data : data.data.data
                     })
                 })
             }, 5000);
@@ -31,9 +31,9 @@ class MyCharts extends React.Component{
                 <LineChart width={1400} height={700} data={this.state.data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Tooltip/>
                     <Legend/>
-                    <Line type="monotone" dataKey="CupcakeCount.N" stroke="#8884d8" />
+                    <Line type="monotone" dataKey="CupcakeCount" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis type="category" dataKey="Month.S" minTickGap="10" padding={{ right: 20 }}>
+                    <XAxis type="category" dataKey="Month" minTickGap="10" padding={{ right: 20 }}>
                         <Label
                             dy = {20}
                             dx = {-40}
